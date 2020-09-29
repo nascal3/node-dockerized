@@ -16,18 +16,6 @@ services:
       - DB_PASS=s1mpl3
     command: ["nodemon", "./bin/www",]
 
-  ftpd-server:
-    image: stilliard/pure-ftpd:hardened
-    ports:
-      - '21:21'
-      - '20:20'
-      - '30000-30009:30000-30009'
-    environment:
-      - PUBLICHOST=localhost
-      - FTP_USER_NAME=test
-      - FTP_USER_PASS=test
-      - FTP_USER_HOME=/app
-
   web:
     build:
       context: .
@@ -41,4 +29,3 @@ services:
       - DB_HOST=localhost
       - DB_USER=root
       - DB_PASS=s1mpl3
-    command: ["node", "./bin/www"]
